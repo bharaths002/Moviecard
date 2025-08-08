@@ -1,4 +1,4 @@
-const API_KEY = "05075510afbe2240176c3d4ae2a11eed";
+const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export const getPopularMovies = async () => {
@@ -9,9 +9,7 @@ export const getPopularMovies = async () => {
 
 export const searchMovies = async (query) => {
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      query
-    )}`
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
   );
   const data = await response.json();
   return data.results;
